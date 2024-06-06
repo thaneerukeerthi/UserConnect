@@ -1,0 +1,10 @@
+<body>
+    <div class="dashboard-container">
+      <h1>Welcome, {{ user.user_firstname +" "+ user.user_lastname }}!</h1>
+      <p>Email: {{ user.user_email }}</p>
+      <p>Phone: {{ user.user_phone }}</p>
+      <p>City: {{ user.user_city}}</p>
+      <p>Zip Code: {{ user.user_zipcode }}</p>
+      <button (click)="goToLogin()">Log Out</button>
+    </div>
+  </body>
