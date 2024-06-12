@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +13,8 @@ export class SignUpComponent {
   signupForm: FormGroup;
   hidePassword: boolean = true;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router,
+     private authService: AuthService,  private userService: UserService) {
     this.signupForm = this.fb.group({
       user_firstname: ['', Validators.required],
       user_email: ['', [Validators.required, Validators.email]],
@@ -31,9 +34,22 @@ export class SignUpComponent {
         user_zipcode: '500072'
       };
 
-      localStorage.setItem('user', JSON.stringify(formData));
-      alert('User registered successfully!');
-      this.router.navigate(['/login']);
+      this.authService.signUp(formData).subscribe(
+        response => {
+          if (response.status === true) {
+            this.userService.setCurrentUser(response.user); 
+            alert('User registered successfully!');
+            this.router.navigate(['/login']);
+          } else {
+            console.log("Failed to Register", response)
+            alert('Registration failed: ' + response.msg);
+          }
+        },
+        error => {
+          console.error('Registration failed', error);
+          alert('Registration failed. Please try again.');
+        }
+      );
     }
   }
   

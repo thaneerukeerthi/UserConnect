@@ -1,7 +1,8 @@
 .login-page-container {
     display: flex;
-    height:100vh;
-    overflow: hidden;
+    height: 100vh;
+    flex-direction: row;
+    overflow: hidden; 
 }
 
 .left-side {
@@ -14,25 +15,30 @@
     color: white;
     text-align: center;
     padding: 20px;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
 .right-side {
     flex: 1.5;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
-    font-weight:normal;
-    font-size:larger;
-    background: linear-gradient(to top left, #09283e, #1c4964, #7eac8c);}
-
-
+    font-weight: normal;
+    font-size: larger;
+    background: linear-gradient(to top left, #09283e, #1c4964, #7eac8c);
+    padding: 20px;
+    min-height: 100vh;
+    overflow-y: auto;
+}
 
 .right-side h1 {
-    font-size: 4em;
+    font-size: 2.5em;
     margin-bottom: 30px;
     text-align: center;
-    color: #0f0f0f;
+    color: #9abfa5;
 }
 
 .right-side span {
@@ -63,9 +69,11 @@
 .form-group .form-control {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #7eac8c;
     border-radius: 4px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-color: transparent;
+    color: #fff;
 }
 
 .form-group .form-control:focus {
@@ -76,7 +84,7 @@
 
 .invalid-feedback {
     color: #dc3545;
-    font-size: 100%;
+    font-size: 0.875em;
 }
 
 .form-check {
@@ -91,9 +99,8 @@
 
 .btn {
     display: block;
-    width: 100%;     
-    padding: 8px;    
-    margin: 1px auto;
+    width: 100%;
+    padding: 10px;
     background: #7eac8c;
     border: none;
     border-radius: 50px;
@@ -101,12 +108,24 @@
     cursor: pointer;
     font-size: 1em;
     text-align: center;
-    margin-left: 10px;
 }
 
 .btn:disabled {
-    opacity: 0.2;
+    opacity: 0.5;
     cursor: not-allowed;
+}
+
+.toggle-password {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 10px;
+}
+
+.password-input-container {
+    position: relative;
 }
 
 .social-login {
@@ -136,20 +155,7 @@
     transform: scale(1.1);
 }
 
-.toggle-password {
-    position: absolute;
-    right: -30px;
-    top: 51%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    padding: 10px;
-  }
-  
-  .password-input-container {
-    position: relative;
-  }
-
-  .divider {
+.divider {
     display: flex;
     align-items: center;
     text-align: center;
@@ -170,6 +176,59 @@
     color: #0f0f0f; 
 }
 
-  
-  
-  
+@media (max-width: 770px) {
+    .login-page-container {
+        flex-direction: column;
+        height: auto; 
+    }
+
+    .left-side {
+        height: 50vh; 
+    }
+
+    .right-side {
+        height: auto; 
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .right-side h1 {
+        font-size: 2em;
+    }
+
+    .form-group .form-control {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .toggle-password {
+        right: 10px;
+    }
+
+    .social-icons {
+        gap: 5px;
+    }
+
+    .social-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .right-side h1 {
+        font-size: 1.5em;
+    }
+
+    .right-side span {
+        margin-left: 0;
+    }
+
+    .social-icon {
+        width: 25px;
+        height: 25px;
+    }
+}

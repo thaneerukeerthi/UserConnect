@@ -7,7 +7,7 @@
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="user_email">Email</label>
-                    <input id="user_email" formControlName="user_email" type="email" class="form-control">
+                    <input id="user_email" formControlName="user_email" placeholder="Enter your email" type="email" class="form-control" autocomplete="off">
                     <div *ngIf="loginForm.get('user_email')?.invalid && loginForm.get('user_email')?.touched" class="invalid-feedback">
                         <small *ngIf="loginForm.get('user_email')?.errors?.['required']">Email is required</small>
                         <small *ngIf="loginForm.get('user_email')?.errors?.['email']">Invalid email</small>
@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="user_password">Password</label>
                     <div class="password-input-container">
-                        <input id="user_password" formControlName="user_password" [type]="hidePassword ? 'password' : 'text'" required class="form-control">
+                        <input id="user_password" formControlName="user_password" placeholder="Enter your password" [type]="hidePassword ? 'password' : 'text'" required class="form-control">
                         <span class="toggle-password" (click)="togglePasswordVisibility()">{{ hidePassword ? '👁' : '🙈' }}</span>
                     </div>
                     <div *ngIf="loginForm.get('user_password')?.invalid && loginForm.get('user_password')?.touched" class="invalid-feedback">

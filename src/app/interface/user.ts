@@ -1,0 +1,23 @@
+export interface UserData {
+    "user_id": string,
+    "user_firstname": string,
+    "user_lastname": string,
+    "user_email": string,
+    "user_phone": string,
+    "user_password": string,
+    "user_gender": string,
+    "user_address1": string,
+    "user_address2": string,
+    "user_city": string,
+    "user_state": string,
+    "user_country": string,
+    "user_zipcode": string,
+    "user_phoneverified": string,
+    "user_emailverified": string,
+    "user_profilepicture": string,
+    "user_userslug": string,
+    "user_status": string,
+    "user_usertype": string,
+    "user_lastlogin": string,
+    "user_createdat": string
+}
