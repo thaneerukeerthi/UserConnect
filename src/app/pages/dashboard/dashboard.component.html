@@ -1,5 +1,5 @@
 <body>
-    <div class="dashboard-container">
+    <div class="dashboard-container" *ngFor="let user of UserData">
       <h1>Welcome, {{ user.user_firstname +" "+ user.user_lastname }}!</h1>
       <p>Email: {{ user.user_email }}</p>
       <p>Phone: {{ user.user_phone }}</p>
